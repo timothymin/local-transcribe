@@ -4,7 +4,6 @@ import SwiftUI
 struct MenuBarView: View {
     @EnvironmentObject private var appModel: AppModel
     @Environment(\.openWindow) private var openWindow
-    @Environment(\.openSettings) private var openSettings
     @State private var appeared = false
     @State private var contextExpanded = false
 
@@ -65,7 +64,7 @@ struct MenuBarView: View {
             }
             Spacer()
             if appModel.isBusy || appModel.isPreparingModel { ProgressView().controlSize(.small) }
-            Button { openSettings() } label: {
+            Button(action: showSettings) {
                 Image(systemName: "gearshape.fill")
                     .font(.system(size: 15))
                     .foregroundStyle(.secondary)
@@ -105,6 +104,21 @@ struct MenuBarView: View {
                         RoundedRectangle(cornerRadius: 6, style: .continuous)
                             .stroke(AppDesign.cardBorder, lineWidth: 1)
                     )
+
+                HStack(spacing: 8) {
+                    Label("Language", systemImage: "globe")
+                        .font(.system(size: 10.5, weight: .medium))
+                    Spacer()
+                    Picker("Language", selection: $appModel.language) {
+                        ForEach(appModel.availableLanguages) { choice in
+                            Text(choice.label).tag(choice.id)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.menu)
+                    .frame(maxWidth: 180, alignment: .trailing)
+                    .disabled(appModel.isRecording || appModel.isBusy)
+                }
 
                 DisclosureGroup(isExpanded: $contextExpanded) {
                     VStack(alignment: .leading, spacing: 6) {
@@ -198,6 +212,13 @@ struct MenuBarView: View {
             Task { await appModel.prepareModel() }
         } else {
             appModel.toggleRecording()
+        }
+    }
+
+    private func showSettings() {
+        openWindow(id: "settings")
+        DispatchQueue.main.async {
+            NSApplication.shared.activate(ignoringOtherApps: true)
         }
     }
 

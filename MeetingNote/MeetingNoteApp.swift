@@ -59,10 +59,11 @@ struct MeetingNoteApp: App {
         }
         .defaultSize(width: 720, height: 560)
 
-        Settings {
+        Window("Local Transcribe Settings", id: "settings") {
             SettingsView()
                 .environmentObject(appModel)
-                .frame(width: 520)
         }
+        .defaultSize(width: 600, height: 680)
+        .windowResizability(.contentSize)
     }
 }

@@ -25,7 +25,7 @@ Local Transcribe is a native macOS menu-bar app that runs Whisper locally with A
 - 20-second rolling audio context for more stable sentences
 - Local Whisper `initial_prompt` context using recent transcript text and session vocabulary
 - Per-recording Context / Vocabulary with a reusable default and Markdown metadata
-- Session-locked language presets, defaulting to Korean with English terms supported
+- Language picker directly in the menu bar card, with additional controls in the dedicated Settings window; defaults to Korean with English terms supported
 - Recent Markdown files directly in the menu popover
 - Searchable transcript library window
 - Configurable model, language, and output folder
