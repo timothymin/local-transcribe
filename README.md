@@ -62,6 +62,8 @@ make install
 
 This builds a release app, signs it locally, installs it to `~/Applications/Local Transcribe.app`, and opens it. An existing installation is preserved as a timestamped backup.
 
+Each release carries an increasing macOS bundle build number, and the installer explicitly refreshes Launch Services so upgrades remain discoverable through Spotlight. Generated build bundles are excluded from Spotlight indexing to avoid duplicate search entries.
+
 To build a distributable ZIP without installing:
 
 ```sh

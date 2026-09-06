@@ -1,9 +1,17 @@
+import AppKit
 import Darwin
 import Foundation
 import SwiftUI
 
+final class LocalTranscribeAppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApplication.shared.setActivationPolicy(.accessory)
+    }
+}
+
 @main
 struct MeetingNoteApp: App {
+    @NSApplicationDelegateAdaptor(LocalTranscribeAppDelegate.self) private var appDelegate
     @StateObject private var appModel: AppModel
 
     init() {

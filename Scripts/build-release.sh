@@ -22,6 +22,9 @@ fi
 
 cd "${PROJECT_ROOT}"
 mkdir -p "${DIST_DIR}" "${CACHE_DIR}/clang" "${CACHE_DIR}/swiftpm" "${CACHE_DIR}/swiftpm-module"
+# Build products are not installed applications. Prevent Spotlight from
+# registering generated and historical bundles from this directory.
+touch "${DIST_DIR}/.metadata_never_index"
 
 export CLANG_MODULE_CACHE_PATH="${CACHE_DIR}/clang"
 export SWIFTPM_MODULECACHE_OVERRIDE="${CACHE_DIR}/swiftpm-module"
@@ -56,7 +59,7 @@ if [[ ! -s "${MLX_METALLIB}" ]]; then
 fi
 
 if [[ -e "${APP_PATH}" ]]; then
-  mv "${APP_PATH}" "${DIST_DIR}/Local Transcribe.previous.$(date +%Y%m%d-%H%M%S).app"
+  rm -rf "${APP_PATH}"
 fi
 
 mkdir -p "${APP_PATH}/Contents/MacOS" "${APP_PATH}/Contents/Resources"

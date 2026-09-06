@@ -4,26 +4,28 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>Local Transcribe</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>LocalTranscribe</string>
 	<key>CFBundleName</key>
 	<string>Local Transcribe</string>
 	<key>CFBundleIdentifier</key>
 	<string>app.localtranscribe.mac</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
 	<key>CFBundleIconFile</key>
 	<string>MeetingNote</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.4.0</string>
+	<string>0.4.1</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>401</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>14.0</string>
-	<key>LSUIElement</key>
-	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Local Transcribe uses the microphone to transcribe speech locally on this Mac.</string>
 	<key>NSPrincipalClass</key>
